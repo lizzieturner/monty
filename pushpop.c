@@ -21,7 +21,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	top->n = num;
 	top->next = *head;
 	top->prev = NULL;
-	*head = top;
+	*stack = top;
 }
 
 /**
@@ -41,7 +41,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 	}
 
 	(top->next)->prev = NULL;
-	*head = top->next;
+	*stack = top->next;
 	free(top);
 }
 
