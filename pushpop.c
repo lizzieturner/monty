@@ -10,6 +10,7 @@ int num;
 void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top = *stack;
+	UNUSED(line_number);
 
 	top = malloc(sizeof(stack_t));
 	if (top == NULL)
@@ -19,7 +20,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 
 	top->n = num;
-	top->next = *head;
+	top->next = *stack;
 	top->prev = NULL;
 	*stack = top;
 }
