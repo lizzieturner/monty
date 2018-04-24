@@ -27,7 +27,7 @@ void stack_it(char *file)
 void find_op(stack_t **stack, int lines, char *token)
 {
 	void (*func)(stack_t **stack_size, unsigned int line_number);
-
+	(void)stack;
 	if (strncmp(token, "push", 4) == 0)
 	{
 		/*do some function */
