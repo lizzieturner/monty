@@ -7,6 +7,7 @@ extern int num;
 /*MACROS*/
 #define ERROR_ARG "Usage: monty file\n"
 #define ERROR_FILE "Error: Can't open file "
+#define ERROR_MALLOC "Error: malloc failed\n"
 #define UNUSED(x) (void)(x)
 
 /*LIBRARIES*/
