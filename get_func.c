@@ -31,9 +31,9 @@ void (*get_func(char *code))(stack_t **stack, unsigned int line_number)
 
 	for (i = 0; inst[i].opcode != NULL; i++)
 	{
-		if (code == *inst[i].opcode)
+		if (code == inst[i].opcode)
 			return (inst[i].f);
 	}
-
-	return (NULL);
+	
+	return (inst[i].f);
 }

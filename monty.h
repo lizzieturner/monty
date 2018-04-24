@@ -13,10 +13,6 @@ extern int num;
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <string.h>
-/*FUNCTION PROTOTYPES*/
-char *read_file(char *file); 
-void stack_it(char *file);
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -49,6 +45,11 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/*function declarations */
+char *read_file(char *file); 
+void stack_it(char *file);
+void find_op(stack_t **stack, int lines, char *token);
+void (*get_func(char *code))(stack_t **stack, unsigned int line_number);
 /* math.c */
 void _add(stack_t **stack, unsigned int line_number);
 void _sub(stack_t **stack, unsigned int line_number);

@@ -5,7 +5,7 @@
  * _push - adds a new element to the top of the stack
  * @stack: stack
  * @line_number: line number
- * /
+ */
 
 void _push(stack_t **stack, unsigned int line_number)
 {
