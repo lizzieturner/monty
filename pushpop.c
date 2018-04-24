@@ -1,5 +1,4 @@
 #include "monty.h"
-#define UNUSED(x) (void)(x)
 
 /**
  * _push - adds a new element to the top of the stack
@@ -9,7 +8,8 @@
 
 void _push(stack_t **stack, unsigned int line_number)
 {
-
+	UNUSED(stack);
+        UNUSED(line_number);
 }
 
 /**
@@ -20,7 +20,8 @@ void _push(stack_t **stack, unsigned int line_number)
 
 void _pop(stack_t **stack, unsigned int line_number)
 {
-
+	UNUSED(stack);
+        UNUSED(line_number);
 }
 
 /**

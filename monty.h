@@ -3,9 +3,12 @@
 
 /*global variable linen num*/
 extern int num;
-/*ERROR MESSAGS*/
+
+/*MACROS*/
 #define ERROR_ARG "Usage: monty file\n"
 #define ERROR_FILE "Error: Can't open file "
+#define UNUSED(x) (void)(x)
+
 /*LIBRARIES*/
 #include <stdio.h>
 #include <stdlib.h>
