@@ -1,7 +1,7 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 
-/* global variable goes here */
+extern int num;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
