@@ -34,6 +34,6 @@ void (*get_func(char *code))(stack_t **stack, unsigned int line_number)
 		if (code == inst[i].opcode)
 			return (inst[i].f);
 	}
-	
+	++i;	
 	return (inst[i].f);
 }

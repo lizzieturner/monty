@@ -11,7 +11,6 @@ void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top = *stack;
 	UNUSED(line_number);
-
 	top = malloc(sizeof(stack_t));
 	if (top == NULL)
 	{
