@@ -9,8 +9,29 @@
 
 void _add(stack_t **stack, unsigned int line_number)
 {
-	UNUSED(stack);
-        UNUSED(line_number);
+	int sum;
+	stack_t *top = *stack, *tmp = *stack;
+
+	if ( *stack == NULL || (*stack)->next == NULL)
+	{
+		printf("L<%u>: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	sum = ((*stack)->next)->n + (*stack)->n;
+
+	top = malloc(sizeof(stack_t));
+	if (top == NULL)
+	{
+		printf(ERROR_MALLOC);
+		exit(EXIT_FAILURE);
+	}
+
+	top->n = sum;
+	top->next = (top->next)->next;
+	top->prev = NULL;
+	*stack = top;
+	free(tmp);
 }
 
 /**
