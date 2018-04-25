@@ -12,7 +12,7 @@ void _swap(stack_t **stack, unsigned int line_number)
 
 	if ((*stack)->next == NULL)
 	{
-		printf("L%d: can't swap, stack too short\n", line_number);
+		printf("L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -30,11 +30,11 @@ void _swap(stack_t **stack, unsigned int line_number)
 void _rotl(stack_t **stack, unsigned int line_number)
 {
 	UNUSED(stack);
-        UNUSED(line_number);
+	UNUSED(line_number);
 }
 
 /**
- * _rotr - prints the char at the top of the stack, followed 
+ * _rotr - prints the char at the top of the stack, followed
  * by a new line
  * @stack: stack
  * @line_number: line_number
@@ -43,5 +43,5 @@ void _rotl(stack_t **stack, unsigned int line_number)
 void _rotr(stack_t **stack, unsigned int line_number)
 {
 	UNUSED(stack);
-        UNUSED(line_number);
+	UNUSED(line_number);
 }
