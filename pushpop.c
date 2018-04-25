@@ -14,6 +14,8 @@ void _push(stack_t **stack, unsigned int line_number)
 	if (top == NULL)
 	{
 		printf(ERROR_MALLOC);
+		free_list(stack);
+		free(stack);
 		exit(EXIT_FAILURE);
 	}
 
@@ -37,6 +39,8 @@ void _pop(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%u: can't pop an empty stack\n", line_number);
+		free_list(stack);
+		free(stack);
 		exit(EXIT_FAILURE);
 	}
 
