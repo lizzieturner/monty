@@ -33,6 +33,7 @@ void stack_it(char *file)
 	free_list(stack);
 	free(stack);
 }
+
 /**
  * free_list - free's the linked list created by stack_it
  * @stack: the stack to free
@@ -53,6 +54,26 @@ void free_list(stack_t **stack)
 }
 
 /**
+ * num_check - checks if push argument is a number
+ * @str: argument
+ *
+ * Return: 0 if it is a number, -1 otherwise
+ */
+
+int num_check(char *str)
+{
+	int i;
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (!isdigit(str[i]))
+		    return (-1);
+	}
+	return (0);
+}
+
+
+/**
  * find_op - trims white space between each command, creates a token that is
  * then sent to get_func to find the associated function, atoi from each of the
  * input arguments from push
@@ -71,6 +92,11 @@ void find_op(stack_t **stack, int lines, char *token)
 		/* find the number, change to atoi, set it as the global variable */
 		while (isalpha(*token))
 			token++;
+		if (!token || num_check(token) == -1)
+		{
+			printf("L%u: usage: push integer\n", lines);
+			exit(EXIT_FAILURE);
+		}
 		num = atoi(token);
 		func = get_func("push");
 	}
