@@ -20,10 +20,14 @@ void _push(stack_t **stack, unsigned int line_number)
 	}
 
 	top->n = num;
-	top->next = *stack;
 	top->prev = NULL;
 	if (*stack != NULL)
+	{
 		(*stack)->prev = top;
+		top->next = *stack;
+	}
+	else
+		top->next = NULL;
 	*stack = top;
 }
 /**

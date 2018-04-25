@@ -66,15 +66,17 @@ int num_check(char *str)
 
 	if (str[i] == ' ')
 		i++;
-	for (; str[i] != '\0'; i++)
+	while (str[i] != '\0')
 	{
-		if (str[i] == ' ')
-			i++;
-		else
+	        if (str[i] != ' ')
+		{
+			if (str[i + 1] == ' ' && spacecheck == 1)
+				return (0);
+			if (str[i] < '0' || str[i] > '9')
+				return (-1);
 			spacecheck = 1;
-
-		if (isdigit(str[i]) == 0)
-			return (-1);
+		}
+		i++;
 	}
 	if (spacecheck == 0)
 		return (-1);
@@ -96,6 +98,8 @@ void find_op(stack_t **stack, int lines, char *token)
 	/* trim leading whitespaces with token */
 	while (isspace(*token))
 		token++;
+	if (token[0] == '#')
+		return;
 	if (strncmp(token, "push", 4) == 0)
 	{
 		/* find the number, change to atoi, set it as the global variable */
@@ -112,12 +116,7 @@ void find_op(stack_t **stack, int lines, char *token)
 		func = get_func("push");
 	}
 	else
-	{
-		if (token[0] == '#')
-			return;
-		else
-			func = get_func(token);
-	}
+		func = get_func(token);
 	if (func == NULL)
 	{
 		printf("L%d: unknown instruction %s\n", lines, token);
