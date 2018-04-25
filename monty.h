@@ -50,11 +50,15 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/*function declarations */
+/* parse_file.c */
 char *read_file(char *file); 
 void stack_it(char *file);
 void find_op(stack_t **stack, int lines, char *token);
+
+/* get_func.c */
 void (*get_func(char *code))(stack_t **stack, unsigned int line_number);
+int _strcmp(char *s1, char *s2);
+
 /* math.c */
 void _add(stack_t **stack, unsigned int line_number);
 void _sub(stack_t **stack, unsigned int line_number);
