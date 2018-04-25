@@ -67,7 +67,7 @@ int num_check(char *str)
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		if (!isdigit(str[i]))
-		    return (-1);
+			return (-1);
 	}
 	return (0);
 }
