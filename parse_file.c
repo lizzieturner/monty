@@ -95,6 +95,8 @@ void find_op(stack_t **stack, int lines, char *token)
 		if (!token || num_check(token) == -1)
 		{
 			printf("L%u: usage: push integer\n", lines);
+			free_list(stack);
+			free(stack);
 			exit(EXIT_FAILURE);
 		}
 		num = atoi(token);
@@ -110,6 +112,7 @@ void find_op(stack_t **stack, int lines, char *token)
 	if (func == NULL)
 	{
 		printf("L%d: unknown instruction %s\n", lines, token);
+		free_list(stack);
 		exit(EXIT_FAILURE);
 	}
 
