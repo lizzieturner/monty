@@ -68,7 +68,7 @@ int num_check(char *str)
 		i++;
 	while (str[i] != '\0')
 	{
-	        if (str[i] != ' ')
+		if (str[i] != ' ')
 		{
 			if (str[i] < '0' || str[i] > '9')
 				return (-1);
@@ -116,13 +116,12 @@ void find_op(stack_t **stack, int lines, char *token)
 			exit(EXIT_FAILURE);
 		}
 		num = atoi(token);
-		func = get_func("push");
+		token = "push";
 	}
-	else
 		func = get_func(token);
 	if (func == NULL)
 	{
-		printf("L%d: unknown instruction %s\n", lines, token);
+		printf("L%u: unknown instruction %s", lines, token);
 		free_list(stack);
 		free(stack);
 		exit(EXIT_FAILURE);
@@ -150,8 +149,7 @@ char *read_file(char *file)
 		newLen = fread(buff, sizeof(char), MAX_BUFF, f);
 		if (ferror(f) != 0)
 		{
-			fprintf(stdout, ERROR_FILE);
-			fprintf(stdout, "%s\n", file);
+			printf("Error: Can't open file %s\n", file);
 			exit(EXIT_FAILURE);
 		}
 		else
@@ -159,8 +157,7 @@ char *read_file(char *file)
 	}
 	else
 	{
-		fprintf(stdout, ERROR_FILE);
-		fprintf(stdout, "%s\n", file);
+		printf("Error: Can't open file %s\n", file);
 		exit(EXIT_FAILURE);
 	}
 
