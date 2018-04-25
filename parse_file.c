@@ -7,6 +7,11 @@ void stack_it(char *file)
 	char *stream, *token;
 	stack_t **stack;
 	stack = malloc(sizeof(char *));	
+	if (stack == NULL)
+	{
+		printf(ERROR_MALLOC);
+		exit(EXIT_FAILURE);
+	}
 	/*creating a stream to then turn into tokens*/
 	stream = read_file(file);
 	
@@ -19,13 +24,31 @@ void stack_it(char *file)
 		++lines;
 		token = strtok(NULL, "\n");
 	}
+	
+	/*free the linked list*/
+	free_list(stack);
+	free(stack);
 }	
 
+
+void free_list(stack_t **stack)
+{
+	stack_t *temp;
+
+	if (*stack == NULL)
+		return;
+
+	while(*stack)
+	{
+		temp = *stack;
+		*stack = (*stack)->next;
+		free(temp);
+	}
+}
 
 void find_op(stack_t **stack, int lines, char *token)
 {
 	void (*func)(stack_t **stack_size, unsigned int line_number);
-	/* (void)stack; */
 	/* trim leading whitespaces with token */
 	while (isspace(*token))
 		token++;
@@ -60,8 +83,8 @@ char *read_file(char *file)
 	size_t newLen = 0;
 	char *buff_point;
 
-	f = fopen(file, "r");	
-	if (f != NULL)
+	f = fopen(file, "r");
+	if (f)
 	{
 		newLen = fread(buff, sizeof(char), MAX_BUFF, f);
 		if (ferror(f) != 0)
@@ -72,6 +95,11 @@ char *read_file(char *file)
 		}
 		else
 			buff[newLen++] = '\0';
+	}
+	else
+	{
+		printf("Error: Can't open file %s\n", file);
+		exit(EXIT_FAILURE);
 	}
 
 	buff_point = buff;

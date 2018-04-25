@@ -54,6 +54,7 @@ typedef struct instruction_s
 char *read_file(char *file); 
 void stack_it(char *file);
 void find_op(stack_t **stack, int lines, char *token);
+void free_list(stack_t **stack);
 
 /* get_func.c */
 void (*get_func(char *code))(stack_t **stack, unsigned int line_number);
