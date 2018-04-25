@@ -114,7 +114,7 @@ void find_op(stack_t **stack, int lines, char *token)
 	else
 	{
 		if (token[0] == '#')
-			func = get_func("nop");
+			return;
 		else
 			func = get_func(token);
 	}
