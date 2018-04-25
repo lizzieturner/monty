@@ -1,8 +1,9 @@
 #include "monty.h"
 /**
- * _strcmp - compares two strings for equality
+ * _strncmp - compares two strings for equality
  * @s1: string 1
  * @s2: string 2
+ * @length: length of string 1
  *
  * Return: 1 if equal, 0 if not equal
  */
@@ -20,26 +21,35 @@ int _strncmp(char *s1, char *s2, int length)
 	return (1);
 }
 
+/**
+ * find_length - finds length of a string
+ * @code: string
+ *
+ * Return: length
+ */
+
 int find_length(char *code)
 {
 	int length = 0, i = 0;
+
 	while (isalpha(code[i]))
 	{
 		++length;
 		++i;
 	}
-	return length;
+	return (length);
 }
 
-/** get_func - identifies correct opcode function
+/**
+ * get_func - identifies correct opcode function
  * @code: opcode
  *
  * Return: function corresponding to that opcode
  */
+
 void (*get_func(char *code))(stack_t **stack, unsigned int line_number)
 {
 	int i, length;
-	
 	instruction_t inst[] = {
 		{"push", _push},
 		{"pop", _pop},
@@ -58,7 +68,7 @@ void (*get_func(char *code))(stack_t **stack, unsigned int line_number)
 		{"mod", _mod},
 		{NULL, NULL}
 	};
-	
+
 	length = find_length(code);
 	for (i = 0; inst[i].opcode != NULL; i++)
 	{

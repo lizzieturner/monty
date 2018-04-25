@@ -11,9 +11,9 @@ void _add(stack_t **stack, unsigned int line_number)
 {
 	int sum;
 
-	if ( *stack == NULL || (*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		printf("L<%u>: can't add, stack too short\n", line_number);
+		printf("L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -34,7 +34,7 @@ void _sub(stack_t **stack, unsigned int line_number)
 {
 	int sub;
 
-	if ( *stack == NULL || (*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		printf("L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -57,7 +57,7 @@ void _mul(stack_t **stack, unsigned int line_number)
 {
 	int mul;
 
-	if ( *stack == NULL || (*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		printf("L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -85,7 +85,7 @@ void _div(stack_t **stack, unsigned int line_number)
 		printf("L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if ( *stack == NULL || (*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		printf("L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -107,14 +107,14 @@ void _div(stack_t **stack, unsigned int line_number)
 void _mod(stack_t **stack, unsigned int line_number)
 {
 	int mod;
-	
+
 	if ((*stack)->n == 0)
 	{
 		printf("L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	if ( *stack == NULL || (*stack)->next == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		printf("L%u: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
