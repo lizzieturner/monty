@@ -101,7 +101,7 @@ void _div(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	div = ((*stack)->next)->n / (*stack)->n;
+	div = (*stack)->n / (*stack)->next->n;
 
 	_pop(stack, line_number);
 	(*stack)->n = div;
