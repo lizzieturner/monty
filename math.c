@@ -86,7 +86,7 @@ void _div(stack_t **stack, unsigned int line_number)
 {
 	int div;
 
-	if ((*stack)->n == 0)
+	if ((*stack)->next->n == 0)
 	{
 		printf("L%u: division by zero\n", line_number);
 		free_list(stack);
