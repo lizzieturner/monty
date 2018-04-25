@@ -6,9 +6,7 @@ void stack_it(char *file)
 	int lines;
 	char *stream, *token;
 	stack_t **stack;
-	
-	/* assigning NULL to our linked list */
-	stack = NULL;
+	stack = malloc(sizeof(char *));	
 	/*creating a stream to then turn into tokens*/
 	stream = read_file(file);
 	
@@ -27,28 +25,34 @@ void stack_it(char *file)
 void find_op(stack_t **stack, int lines, char *token)
 {
 	void (*func)(stack_t **stack_size, unsigned int line_number);
+	/* (void)stack; */
 	/* trim leading whitespaces with token */
 	while (isspace(*token))
 		token++;
-	
+	printf("Find_op: %s\n", token);
 	if (strncmp(token, "push", 4) == 0)
 	{
 		/* find the number, change to atoi, set it as the global variable */
 		while (isalpha(*token))
 			token++;
 		num = atoi(token);
-		printf("%d\n", num);
 		func = get_func("push");
 	}
 	else
-		func = get_func(token);
+	{
+		printf("inside if: %s\n", token);
+		if (token[0] == '#')
+			func = get_func("nop");
+		else	
+			func = get_func(token);
+	}
 	if (func == NULL)
 	{
 		printf("L%d: unknown instruction %s\n", lines, token);
 		exit(EXIT_FAILURE);
 	}
-	(void)stack;
-	/*func(stack, lines);*/
+
+	func(stack, lines);
 }
 
 char *read_file(char *file)
