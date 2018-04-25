@@ -59,6 +59,8 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	else
 	{
 		printf("L%u: can't pchar, value out of range\n", line_number);
+		free_list(stack);
+		free(stack);
 		exit(EXIT_FAILURE);
 	}
 }
