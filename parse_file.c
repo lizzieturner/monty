@@ -17,7 +17,6 @@ void stack_it(char *file)
 		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	/*creating a stream to then turn into tokens*/
 	stream = read_file(file);
 
 	/*tokenizing each line to then pass to each function*/
@@ -29,7 +28,6 @@ void stack_it(char *file)
 		++lines;
 		token = strtok(NULL, "\n");
 	}
-	/*free the linked list*/
 	free_list(stack);
 	free(stack);
 }
@@ -103,7 +101,7 @@ void find_op(stack_t **stack, int lines, char *token)
 		token++;
 	if (token[0] == '#')
 		return;
-	if (strncmp(token, "push", 4) == 0)
+	if (strncmp(token, "push", 4) == 0 && token[4] == ' ')
 	{
 		/* find the number, change to atoi, set it as the global variable */
 		while (isalpha(*token))
@@ -121,7 +119,7 @@ void find_op(stack_t **stack, int lines, char *token)
 		func = get_func(token);
 	if (func == NULL)
 	{
-		printf("L%u: unknown instruction %s", lines, token);
+		printf("L%u: unknown instruction %s\n", lines, token);
 		free_list(stack);
 		free(stack);
 		exit(EXIT_FAILURE);
