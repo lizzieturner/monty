@@ -1,11 +1,30 @@
 #include "monty.h"
+/**
+ * _strcmp - compares two strings for equality
+ * @s1: string 1
+ * @s2: string 2
+ *
+ * Return: 1 if equal, 0 if not equal
+ */
+int _strcmp(char *s1, char *s2)
+{
+	unsigned int i = 0;
+
+	while (s1[i])
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		++i;
+	}
+
+	return (1);
+}
 
 /** get_func - identifies correct opcode function
  * @code: opcode
  *
  * Return: function corresponding to that opcode
  */
-
 void (*get_func(char *code))(stack_t **stack, unsigned int line_number)
 {
 	int i;
@@ -31,7 +50,7 @@ void (*get_func(char *code))(stack_t **stack, unsigned int line_number)
 
 	for (i = 0; inst[i].opcode != NULL; i++)
 	{
-		if (code == inst[i].opcode)
+		if (_strcmp(code,inst[i].opcode))
 			return (inst[i].f);
 	}
 	++i;	
