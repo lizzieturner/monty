@@ -150,8 +150,8 @@ char *read_file(char *file)
 		newLen = fread(buff, sizeof(char), MAX_BUFF, f);
 		if (ferror(f) != 0)
 		{
-			printf(ERROR_FILE);
-			printf("%s\n", file);
+			fprintf(stdout, ERROR_FILE);
+			fprintf(stdout, "%s\n", file);
 			exit(EXIT_FAILURE);
 		}
 		else
@@ -159,7 +159,8 @@ char *read_file(char *file)
 	}
 	else
 	{
-		printf("Error: Can't open file %s\n", file);
+		fprintf(stdout, ERROR_FILE);
+		fprintf(stdout, "%s\n", file);
 		exit(EXIT_FAILURE);
 	}
 
