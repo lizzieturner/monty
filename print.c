@@ -9,7 +9,8 @@
 void _pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *runner = *stack;
-        UNUSED(line_number);
+
+	UNUSED(line_number);
 
 	while (runner != NULL)
 	{
@@ -28,11 +29,11 @@ void _pint(stack_t **stack, unsigned int line_number)
 {
 	if (stack == NULL || *stack == NULL)
 	{
-		printf("L<%u>: can't pint, stack empty\n", line_number);
+		printf("L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
-	printf("%d\n",(*stack)->n);
+	printf("%d\n", (*stack)->n);
 }
 
 /**
@@ -44,7 +45,7 @@ void _pint(stack_t **stack, unsigned int line_number)
 void _pchar(stack_t **stack, unsigned int line_number)
 {
 	UNUSED(stack);
-        UNUSED(line_number);
+	UNUSED(line_number);
 }
 
 /**
