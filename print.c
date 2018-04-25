@@ -72,6 +72,21 @@ void _pchar(stack_t **stack, unsigned int line_number)
 
 void _pstr(stack_t **stack, unsigned int line_number)
 {
-	UNUSED(stack);
-	UNUSED(line_number);
+	(void)line_number;
+
+	if (stack == NULL || *stack == NULL)
+		printf("\n");
+
+	while (*stack)
+	{
+		if (isascii((*stack)->n) && (*stack)->n != 0)
+			printf("%c", (*stack)->n);
+		else
+		{
+			printf("\n");
+			return;
+		}
+		*stack = (*stack)->next;
+	}
+	printf("\n");
 }
