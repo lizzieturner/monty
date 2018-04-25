@@ -86,16 +86,16 @@ void _div(stack_t **stack, unsigned int line_number)
 {
 	int div;
 
-	if ((*stack)->n == 0)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		printf("L%u: division by zero\n", line_number);
+		printf("L%u: can't div, stack too short\n", line_number);
 		free_list(stack);
 		free(stack);
 		exit(EXIT_FAILURE);
 	}
-	if (*stack == NULL || (*stack)->next == NULL)
+	if ((*stack)->n == 0)
 	{
-		printf("L%u: can't div, stack too short\n", line_number);
+		printf("L%u: division by zero\n", line_number);
 		free_list(stack);
 		free(stack);
 		exit(EXIT_FAILURE);
