@@ -46,8 +46,21 @@ void _pint(stack_t **stack, unsigned int line_number)
 
 void _pchar(stack_t **stack, unsigned int line_number)
 {
-	UNUSED(stack);
-	UNUSED(line_number);
+	if (stack == NULL || *stack == NULL)
+	{
+		printf("L%u: can't pchar, stack empty\n", line_number);
+		free_list(stack);
+		free(stack);
+		exit(EXIT_FAILURE);
+	}
+
+	if (isascii((*stack)->n))
+		printf("%c\n", (*stack)->n);
+	else
+	{
+		printf("L%u: can't pchar, value out of range\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 }
 
 /**
