@@ -101,14 +101,13 @@ void find_op(stack_t **stack, int lines, char *token)
 		token++;
 	if (token[0] == '#')
 		return;
-	if (strncmp(token, "push", 4) == 0 && token[4] == ' ')
+	if (strncmp(token, "push ", 5) == 0)
 	{
-		/* find the number, change to atoi, set it as the global variable */
 		while (isalpha(*token))
 			token++;
 		if (num_check(token) == -1)
 		{
-			printf("L%u: usage: push integer\n", lines);
+			printf("L%u: usage: push integer", lines);
 			free_list(stack);
 			free(stack);
 			exit(EXIT_FAILURE);
