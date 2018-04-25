@@ -62,13 +62,22 @@ void free_list(stack_t **stack)
 
 int num_check(char *str)
 {
-	int i;
+	int i = 0, spacecheck = 0;
 
-	for (i = 0; str[i] != '\0'; i++)
+	if (str[i] == ' ')
+		i++;
+	for (; str[i] != '\0'; i++)
 	{
-		if (!isdigit(str[i]))
+		if (str[i] == ' ')
+			i++;
+		else
+			spacecheck = 1;
+
+		if (isdigit(str[i]) == 0)
 			return (-1);
 	}
+	if (spacecheck == 0)
+		return (-1);
 	return (0);
 }
 
@@ -92,7 +101,7 @@ void find_op(stack_t **stack, int lines, char *token)
 		/* find the number, change to atoi, set it as the global variable */
 		while (isalpha(*token))
 			token++;
-		if (!token || num_check(token) == -1)
+		if (num_check(token) == -1)
 		{
 			printf("L%u: usage: push integer\n", lines);
 			free_list(stack);
