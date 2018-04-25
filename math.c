@@ -86,7 +86,7 @@ void _div(stack_t **stack, unsigned int line_number)
 {
 	int div;
 
-	if ((*stack)->next->n == 0)
+	if ((*stack)->n == 0)
 	{
 		printf("L%u: division by zero\n", line_number);
 		free_list(stack);
@@ -101,7 +101,7 @@ void _div(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	div = (*stack)->n / (*stack)->next->n;
+	div = (*stack)->next->n / (*stack)->n;
 
 	_pop(stack, line_number);
 	(*stack)->n = div;
@@ -136,6 +136,6 @@ void _mod(stack_t **stack, unsigned int line_number)
 
 	mod = ((*stack)->next)->n % (*stack)->n;
 
+	(*stack)->next->n = mod;
 	_pop(stack, line_number);
-	(*stack)->n = mod;
 }
