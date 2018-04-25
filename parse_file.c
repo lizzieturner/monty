@@ -70,11 +70,14 @@ int num_check(char *str)
 	{
 	        if (str[i] != ' ')
 		{
-			if (str[i + 1] == ' ' && spacecheck == 1)
-				return (0);
 			if (str[i] < '0' || str[i] > '9')
 				return (-1);
 			spacecheck = 1;
+		}
+		else
+		{
+			if (spacecheck == 1)
+				return (0);
 		}
 		i++;
 	}
