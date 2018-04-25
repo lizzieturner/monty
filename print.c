@@ -30,6 +30,8 @@ void _pint(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%u: can't pint, stack empty\n", line_number);
+		free_list(stack);
+		free(stack);
 		exit(EXIT_FAILURE);
 	}
 

@@ -122,6 +122,7 @@ void find_op(stack_t **stack, int lines, char *token)
 	{
 		printf("L%d: unknown instruction %s\n", lines, token);
 		free_list(stack);
+		free(stack);
 		exit(EXIT_FAILURE);
 	}
 
