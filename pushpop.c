@@ -1,7 +1,5 @@
 #include "monty.h"
-int num;
-
-/**
+int num;/**
  * _push - adds a new element to the top of the stack
  * @stack: stack
  * @line_number: line number
@@ -9,7 +7,7 @@ int num;
 
 void _push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *top = *stack;
+	stack_t *top;
 	UNUSED(line_number);
 	top = malloc(sizeof(stack_t));
 	if (top == NULL)
@@ -25,7 +23,6 @@ void _push(stack_t **stack, unsigned int line_number)
 		(*stack)->prev = top;
 	*stack = top;
 }
-
 /**
 * _pop - removes the top element of the stack
 * @stack: stack

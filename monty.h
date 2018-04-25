@@ -57,7 +57,8 @@ void find_op(stack_t **stack, int lines, char *token);
 
 /* get_func.c */
 void (*get_func(char *code))(stack_t **stack, unsigned int line_number);
-int _strcmp(char *s1, char *s2);
+int _strncmp(char *s1, char *s2, int length);
+int find_length(char *code);
 
 /* math.c */
 void _add(stack_t **stack, unsigned int line_number);

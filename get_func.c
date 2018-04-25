@@ -6,11 +6,11 @@
  *
  * Return: 1 if equal, 0 if not equal
  */
-int _strcmp(char *s1, char *s2)
+int _strncmp(char *s1, char *s2, int length)
 {
-	unsigned int i = 0;
+	int i = 0;
 
-	while (s1[i])
+	while (s1[i] && i < length)
 	{
 		if (s1[i] != s2[i])
 			return (0);
@@ -20,6 +20,17 @@ int _strcmp(char *s1, char *s2)
 	return (1);
 }
 
+int find_length(char *code)
+{
+	int length = 0, i = 0;
+	while (isalpha(code[i]))
+	{
+		++length;
+		++i;
+	}
+	return length;
+}
+
 /** get_func - identifies correct opcode function
  * @code: opcode
  *
@@ -27,8 +38,8 @@ int _strcmp(char *s1, char *s2)
  */
 void (*get_func(char *code))(stack_t **stack, unsigned int line_number)
 {
-	int i;
-
+	int i, length;
+	
 	instruction_t inst[] = {
 		{"push", _push},
 		{"pop", _pop},
@@ -47,12 +58,12 @@ void (*get_func(char *code))(stack_t **stack, unsigned int line_number)
 		{"mod", _mod},
 		{NULL, NULL}
 	};
-
+	
+	length = find_length(code);
 	for (i = 0; inst[i].opcode != NULL; i++)
 	{
-		if (_strcmp(code,inst[i].opcode))
+		if (_strncmp(code, inst[i].opcode, length))
 			return (inst[i].f);
 	}
-	++i;	
 	return (inst[i].f);
 }

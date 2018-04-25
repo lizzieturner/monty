@@ -29,7 +29,6 @@ void find_op(stack_t **stack, int lines, char *token)
 	/* trim leading whitespaces with token */
 	while (isspace(*token))
 		token++;
-	printf("Find_op: %s\n", token);
 	if (strncmp(token, "push", 4) == 0)
 	{
 		/* find the number, change to atoi, set it as the global variable */
@@ -40,7 +39,6 @@ void find_op(stack_t **stack, int lines, char *token)
 	}
 	else
 	{
-		printf("inside if: %s\n", token);
 		if (token[0] == '#')
 			func = get_func("nop");
 		else	

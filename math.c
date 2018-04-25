@@ -32,8 +32,18 @@ void _add(stack_t **stack, unsigned int line_number)
 
 void _sub(stack_t **stack, unsigned int line_number)
 {
-	UNUSED(stack);
-        UNUSED(line_number);
+	int sub;
+
+	if ( *stack == NULL || (*stack)->next == NULL)
+	{
+		printf("L%u: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	sub = ((*stack)->next)->n - (*stack)->n;
+
+	_pop(stack, line_number);
+	(*stack)->n = sub;
 }
 
 /**
@@ -45,8 +55,18 @@ void _sub(stack_t **stack, unsigned int line_number)
 
 void _mul(stack_t **stack, unsigned int line_number)
 {
-	UNUSED(stack);
-        UNUSED(line_number);
+	int mul;
+
+	if ( *stack == NULL || (*stack)->next == NULL)
+	{
+		printf("L%u: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	mul = ((*stack)->next)->n * (*stack)->n;
+
+	_pop(stack, line_number);
+	(*stack)->n = mul;
 }
 
 /**
@@ -58,8 +78,23 @@ void _mul(stack_t **stack, unsigned int line_number)
 
 void _div(stack_t **stack, unsigned int line_number)
 {
-	UNUSED(stack);
-        UNUSED(line_number);
+	int div;
+
+	if ((*stack)->n == 0)
+	{
+		printf("L%u: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ( *stack == NULL || (*stack)->next == NULL)
+	{
+		printf("L%u: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	div = ((*stack)->next)->n / (*stack)->n;
+
+	_pop(stack, line_number);
+	(*stack)->n = div;
 }
 
 /**
@@ -71,6 +106,22 @@ void _div(stack_t **stack, unsigned int line_number)
 
 void _mod(stack_t **stack, unsigned int line_number)
 {
-	UNUSED(stack);
-        UNUSED(line_number);
+	int mod;
+	
+	if ((*stack)->n == 0)
+	{
+		printf("L%u: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	if ( *stack == NULL || (*stack)->next == NULL)
+	{
+		printf("L%u: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+
+	mod = ((*stack)->next)->n % (*stack)->n;
+
+	_pop(stack, line_number);
+	(*stack)->n = mod;
 }
