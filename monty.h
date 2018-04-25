@@ -1,11 +1,8 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 
-/*GLOBAL VARIABLE*/
+/*GLOBAL VARIABLES AND MACROS*/
 extern int num;
-
-/*MACROS*/
-#define ERROR_MALLOC "Error: malloc failed\n"
 #define UNUSED(x) (void)(x)
 
 /*LIBRARIES*/

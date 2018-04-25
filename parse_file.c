@@ -14,7 +14,7 @@ void stack_it(char *file)
 	stack = malloc(sizeof(char *));
 	if (stack == NULL)
 	{
-		printf(ERROR_MALLOC);
+		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	/*creating a stream to then turn into tokens*/

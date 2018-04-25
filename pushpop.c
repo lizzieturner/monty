@@ -13,7 +13,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	top = malloc(sizeof(stack_t));
 	if (top == NULL)
 	{
-		printf(ERROR_MALLOC);
+		printf("Error: malloc failed\n");
 		free_list(stack);
 		free(stack);
 		exit(EXIT_FAILURE);
