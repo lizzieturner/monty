@@ -57,6 +57,19 @@ void _rotl(stack_t **stack, unsigned int line_number)
 
 void _rotr(stack_t **stack, unsigned int line_number)
 {
-	UNUSED(stack);
+	stack_t *top = *stack;
+
 	UNUSED(line_number);
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
+	while (top->next)
+		top = top->next;
+
+	top->prev->next = NULL;
+	(*stack)->prev = top;
+	top->next = (*stack)->next;
+	top->prev = NULL;
+	top = *stack;
 }
