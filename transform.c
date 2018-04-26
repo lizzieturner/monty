@@ -32,22 +32,28 @@ void _swap(stack_t **stack, unsigned int line_number)
 void _rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp, *new;
+
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
 		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	
+
+	if (*stack == NULL || (*stack)->next == NULL)
+	{
+		printf("L%u: can't rotl, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	temp = *stack;
 	new = *stack;
-	(void)line_number;
-
+	new->n = (*stack)->n;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
+
 	while (temp->next)
 		temp = temp->next;
-	
+
 	temp->next = new;
 	new->prev = temp;
 	new->next = NULL;
