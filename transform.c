@@ -40,18 +40,15 @@ void _rotl(stack_t **stack, unsigned int line_number)
 	}
 	
 	temp = *stack;
-	new = temp;
+	new = *stack;
 	(void)line_number;
+
+	*stack = (*stack)->next;
+	(*stack)->prev = NULL;
+	while (temp->next)
+		temp = temp->next;
 	
-	while ((*stack)->next)
-	{
-		printf("Stack: %d\n", (*stack)->n);
-		*stack = (*stack)->next;
-	}
-	
-	printf("Out Stack: %d\n", (*stack)->n);
-	printf("New: %d\n", new->n);
-	(*stack)->next = new;
+	temp->next = new;
 	new->prev = temp;
 	new->next = NULL;
 }
