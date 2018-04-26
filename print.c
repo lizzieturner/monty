@@ -83,7 +83,6 @@ void _pstr(stack_t **stack, unsigned int line_number)
 		free(stack);
 		exit(EXIT_FAILURE);
 	}
-	
 	while (*stack)
 	{
 		if (isascii((*stack)->n) && (*stack)->n != 0)
