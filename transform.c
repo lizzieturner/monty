@@ -60,7 +60,6 @@ void _rotr(stack_t **stack, unsigned int line_number)
 	stack_t *top = *stack;
 
 	UNUSED(line_number);
-
 	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
 		return;
 
@@ -68,8 +67,8 @@ void _rotr(stack_t **stack, unsigned int line_number)
 		top = top->next;
 
 	top->prev->next = NULL;
-	(*stack)->prev = top;
-	top->next = (*stack)->next;
+	top->next = *stack;
 	top->prev = NULL;
-	top = *stack;
+	(*stack)->prev = top;
+	*stack = top;
 }
