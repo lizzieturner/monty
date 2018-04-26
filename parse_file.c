@@ -68,7 +68,7 @@ int num_check(char *str)
 	{
 		if (str[i] != ' ')
 		{
-			if (str[i] < '0' || str[i] > '9')
+			if ((str[i] < '0' || str[i] > '9') && str[i] != '-')
 				return (-1);
 			spacecheck = 1;
 		}
@@ -112,7 +112,10 @@ void find_op(stack_t **stack, int lines, char *token)
 			free(stack);
 			exit(EXIT_FAILURE);
 		}
-		num = atoi(token);
+		if (token[0] == '-')
+			num = atoi(token) * -1;
+		else
+			num = atoi(token);
 		token = "push";
 	}
 
