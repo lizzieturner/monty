@@ -107,7 +107,7 @@ void find_op(stack_t **stack, int lines, char *token)
 			token++;
 		if (num_check(token) == -1)
 		{
-			printf("L%u: usage: push integer", lines);
+			printf("L%u: usage: push integer\n", lines);
 			free_list(stack);
 			free(stack);
 			exit(EXIT_FAILURE);
