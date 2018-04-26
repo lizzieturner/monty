@@ -31,8 +31,29 @@ void _swap(stack_t **stack, unsigned int line_number)
 
 void _rotl(stack_t **stack, unsigned int line_number)
 {
-	UNUSED(stack);
-	UNUSED(line_number);
+	stack_t *temp, *new;
+	new = malloc(sizeof(stack_t));
+	if (new == NULL)
+	{
+		printf("Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	
+	temp = *stack;
+	new = temp;
+	(void)line_number;
+	
+	while ((*stack)->next)
+	{
+		printf("Stack: %d\n", (*stack)->n);
+		*stack = (*stack)->next;
+	}
+	
+	printf("Out Stack: %d\n", (*stack)->n);
+	printf("New: %d\n", new->n);
+	(*stack)->next = new;
+	new->prev = temp;
+	new->next = NULL;
 }
 
 /**
