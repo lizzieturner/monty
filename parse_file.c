@@ -101,7 +101,7 @@ void find_op(stack_t **stack, int lines, char *token)
 		token++;
 	if (token[0] == '#')
 		return;
-	if (strncmp(token, "push ", 5) == 0)
+	if (_strncmp(token, "push ", 5))
 	{
 		while (isalpha(*token))
 			token++;
@@ -115,7 +115,8 @@ void find_op(stack_t **stack, int lines, char *token)
 		num = atoi(token);
 		token = "push";
 	}
-		func = get_func(token);
+
+	func = get_func(token);
 	if (func == NULL)
 	{
 		printf("L%u: unknown instruction %s\n", lines, token);

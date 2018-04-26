@@ -32,7 +32,7 @@ int find_length(char *code)
 {
 	int length = 0, i = 0;
 
-	while (isalpha(code[i]))
+	while (isascii(code[i]))
 	{
 		++length;
 		++i;
