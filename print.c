@@ -49,24 +49,20 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		printf("L%u: can't pchar, stack empty\n", line_number);
-/*
 		free_list(stack);
 		free(stack);
-*/
 		exit(EXIT_FAILURE);
 	}
 
-	if (isascii(num))
-		printf("%c\n", num);
-	else
+	if (!isascii(num))
 	{
 		printf("L%u: can't pchar, value out of range\n", line_number);
-/*
 		free_list(stack);
 		free(stack);
-*/
 		exit(EXIT_FAILURE);
 	}
+
+	printf("%c\n", num);
 }
 
 /**
@@ -78,6 +74,8 @@ void _pchar(stack_t **stack, unsigned int line_number)
 
 void _pstr(stack_t **stack, unsigned int line_number)
 {
+	stack_t *runner = *stack;
+
 	(void)line_number;
 
 	if (stack == NULL || *stack == NULL)
@@ -85,16 +83,16 @@ void _pstr(stack_t **stack, unsigned int line_number)
 		printf("\n");
 		return;
 	}
-	while (*stack != NULL)
+	while (runner != NULL)
 	{
-		if (isascii((*stack)->n) && (*stack)->n != 0)
-			printf("%c", (*stack)->n);
+		if (isascii(runner->n) && runner->n != 0)
+			printf("%c", runner->n);
 		else
 		{
 			printf("\n");
 			return;
 		}
-		*stack = (*stack)->next;
+		runner = runner->next;
 	}
 	printf("\n");
 }
