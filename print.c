@@ -77,8 +77,13 @@ void _pstr(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 	if (stack == NULL || *stack == NULL)
+	{
 		printf("\n");
-
+		free_list(stack);
+		free(stack);
+		exit(EXIT_FAILURE);
+	}
+	
 	while (*stack)
 	{
 		if (isascii((*stack)->n) && (*stack)->n != 0)
