@@ -101,7 +101,7 @@ void find_op(stack_t **stack, int lines, char *token)
 		token++;
 	if (token[0] == '#')
 		return;
-	if (_strncmp(token, "push ", 5))
+	if (strncmp(token, "push ", 5) == 0)
 	{
 		while (isalpha(*token))
 			token++;
