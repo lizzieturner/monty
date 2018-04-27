@@ -1,5 +1,5 @@
 #include "monty.h"
-#define MAX_BUFF 1024
+#define MAX_BUFF 100000
 /**
  * stack_it - creates a linked list of all the commands per line from
  * input file
@@ -96,6 +96,8 @@ int num_check(char *str)
 void find_op(stack_t **stack, int lines, char *token)
 {
 	void (*func)(stack_t **stack_size, unsigned int line_number);
+	char *error;
+	
 	/* trim leading whitespaces with token */
 	while (isspace(*token))
 		token++;
@@ -122,9 +124,11 @@ void find_op(stack_t **stack, int lines, char *token)
 	func = get_func(token);
 	if (func == NULL)
 	{
-		printf("L%u: unknown instruction %s\n", lines, token);
+		error = strndup(token, 4);
+		printf("L%u: unknown instruction %s\n", lines, error);
 		free_list(stack);
 		free(stack);
+		free(error);
 		exit(EXIT_FAILURE);
 	}
 
