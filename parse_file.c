@@ -97,7 +97,7 @@ void find_op(stack_t **stack, int lines, char *token)
 {
 	void (*func)(stack_t **stack_size, unsigned int line_number);
 	char *error;
-	
+
 	/* trim leading whitespaces with token */
 	while (isspace(*token))
 		token++;
