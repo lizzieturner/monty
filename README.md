@@ -25,6 +25,7 @@
 - Ex: `./monty ./bytecodes/00.m`
 
 There are multiple `.m` files to choose from in the bytcodes files that run different Opcode functionality. Below is a table of all the Opcode options. Each file in the bytcodes folder contains different Opcodes that run their specific functionality.
+
 | Opcode Name   | Opcode Description |
 | :-----------: | :------------------- |
 | push          | *pushes an element on to the stack* |
